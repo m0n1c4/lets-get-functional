@@ -191,16 +191,10 @@ console.log('These customers are friends with Cooley: ' + isFriend(customers, 'C
      });
      return tagCounter;
     }
-    var countedTags = countEachTag(allTags);
+     var countedTags = countEachTag(allTags);
    console.log(tagCounter);
    
-   // var topTags =(_.pluck(countedTags, '3'));
-   // console.log(topTags);
    
-  // var tagged = _.pluck(customers, "tags");
-  // console.log(tagged);
-  
-  // function pullTags(element, index, array){}
  
  
  // // 10) Create a summary of genders, the output should be:
@@ -212,11 +206,12 @@ console.log('These customers are friends with Cooley: ' + isFriend(customers, 'C
  // // You should use reduce() to solve this.
 
   var gendersArr = _.pluck(customers, 'gender');
-  var genders = {};
- function pickGenders(element, index, array){
-  if(!(genders[index])) genders[index] = 1;
-  else (genders[index]) = genders[index] + 1;
-  return genders;
- }
- console.log(_.reduce(gendersArr, pickGenders));
- 
+  console.log(gendersArr); //logs correct number of females
+  
+ function pickGenders(summary, gender){
+  if(gender in summary) ++summary[gender];
+  else summary[gender] = 1;
+  return summary;
+  }
+ console.log(_.reduce(gendersArr, pickGenders, {}));
+ //s
